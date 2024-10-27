@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
+//using TreeEditor;
 using UnityEngine;
 using TMPro;
 using TMPro.Examples;
 using UnityEngine.UIElements;
+using System.Threading;
 
 public class GamePlay : MonoBehaviour
 {
+
+    private int muter;
 
     [SerializeField]
     GameObject restartButton;
@@ -15,7 +18,7 @@ public class GamePlay : MonoBehaviour
     GameObject startMenuButton;
 
     private bool gameOver;
-    
+
     [SerializeField]
     GameObject tile;
     [SerializeField]
@@ -61,7 +64,7 @@ public class GamePlay : MonoBehaviour
 
     private bool isPaused = false;
 
-    [SerializeField] 
+    [SerializeField]
     AudioSource speedSound;
     [SerializeField]
     AudioSource stickySound;
@@ -73,6 +76,17 @@ public class GamePlay : MonoBehaviour
     AudioSource obstacleSound;
     [SerializeField]
     AudioSource nopeSound;
+    [SerializeField]
+    AudioSource nonGameSound;
+    [SerializeField]
+    AudioSource gameSound;
+    [SerializeField]
+    AudioSource fallingSound;
+    private bool fallingSoundHasPlayed;
+
+    private int lane;
+
+    private bool gameSoundOn;
 
 
 
@@ -89,7 +103,8 @@ public class GamePlay : MonoBehaviour
     void GenerateTiles()
     {
         // Create an array of the tile prefabs, including the empty tile
-        GameObject[] tileTypes = { tile, tile, tile, tile, tile, tile, boostTile, suppliesTile, stickyTile, burningTile, emptyTile, obstacleTile };
+        GameObject[] tileTypes = { tile, tile, tile, tile, tile, tile, tile, tile, tile,  
+            boostTile, suppliesTile, stickyTile, burningTile, emptyTile, obstacleTile };
 
 
         for (int zIndex = 0; zIndex < totalRows; zIndex++)
@@ -143,7 +158,7 @@ public class GamePlay : MonoBehaviour
 
         // Update the lastZPosition to the last generated position
         lastZPosition += totalRows * zIncrement;
-        
+
     }
 
 
@@ -180,17 +195,17 @@ public class GamePlay : MonoBehaviour
         {
             speed = speed * 2;
             normalSpeed = false;
-            if (!speedSound.isPlaying)
+            if (!speedSound.isPlaying && muter != 1)
             {
                 speedSound.Play();
             }
-            
+
         }
-        if(collision.gameObject.CompareTag("sticky") && normalSpeed == false)
+        if (collision.gameObject.CompareTag("sticky") && normalSpeed == false)
         {
             speed = speed / 2;
             normalSpeed = true;
-            if (!stickySound.isPlaying)
+            if (!stickySound.isPlaying && muter != 1)
             {
                 stickySound.Play();
             }
@@ -198,7 +213,7 @@ public class GamePlay : MonoBehaviour
         if (collision.gameObject.CompareTag("burning"))
         {
             fuelRate = 10.0f;
-            if (!burningSound.isPlaying)
+            if (!burningSound.isPlaying && muter != 1)
             {
                 burningSound.Play();
             }
@@ -206,7 +221,7 @@ public class GamePlay : MonoBehaviour
         if (collision.gameObject.CompareTag("supplies"))
         {
             fuel = 50;
-            if (!suppliesSound.isPlaying)
+            if (!suppliesSound.isPlaying && muter != 1)
             {
                 suppliesSound.Play();
             }
@@ -216,11 +231,36 @@ public class GamePlay : MonoBehaviour
         {
             gameOver = true;
             supplementaryText.SetText("You've hit an obstacle");
-            if (!obstacleSound.isPlaying)
+            if (!obstacleSound.isPlaying && muter != 1)
             {
                 obstacleSound.Play();
             }
         }
+    }
+
+    private void ChangeSounds()
+    {
+        if( muter == 1)
+        {
+            gameSound.mute = true;
+            nonGameSound.mute = true;
+        }
+        if (gameSound.isPlaying)
+        {
+            gameSound.Pause();
+            nonGameSound.Play();
+        }
+        else
+        {
+            if (!gameSound.isPlaying)
+            {
+                nonGameSound.Pause();
+                gameSound.Play();
+
+            }
+            
+        }
+
     }
 
     private void OnCollisionExit(Collision collision) 
@@ -233,7 +273,14 @@ public class GamePlay : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("started");
+
+        muter = PlayerPrefs.GetInt("Mute");
+
+        if (!gameSound.isPlaying && muter != 1)
+        {
+            gameSound.Play();
+        }
+
         isPaused = false;
 
         normalSpeed = true;
@@ -257,12 +304,19 @@ public class GamePlay : MonoBehaviour
         restartButton.SetActive(false);
         startMenuButton.SetActive(false);
 
+        fallingSoundHasPlayed = false; 
+
+        lane = 1;
+
+        gameSoundOn = true;
+
     }
 
 
     private void TogglePause()
     {
         isPaused = !isPaused; // Toggle the pause state
+        ChangeSounds();
         restartButton.SetActive(isPaused);
         startMenuButton.SetActive(isPaused);
 
@@ -290,6 +344,12 @@ public class GamePlay : MonoBehaviour
             // Show the restart button when the game is over
             restartButton.SetActive(true);
             startMenuButton.SetActive(true);
+            if (gameSoundOn)
+            {
+                gameSoundOn = false;
+                ChangeSounds();
+            }
+            
         }
     }
 
@@ -342,31 +402,44 @@ public class GamePlay : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed);
 
-        if (Input.GetKeyDown(KeyCode.A) && transform.position.x > -2.75f && !gameOver)
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.Translate(-2.75f, 0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.A) && transform.position.x == -2.75f && !gameOver)
-        {
-            if (!nopeSound.isPlaying)
+            if (lane > 0 && !gameOver) // Move left only if not at lane 0
+            {
+                transform.Translate(-2.75f, 0, 0);
+                lane--;
+            }
+            else if (!nopeSound.isPlaying && muter != 1)
             {
                 nopeSound.Play();
             }
         }
-        if (Input.GetKeyDown(KeyCode.D) && transform.position.x < 2.75f && !gameOver)
+
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.Translate(2.75f, 0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.D) && transform.position.x == 2.75f && !gameOver)
-        {
-            if (!nopeSound.isPlaying)
+            if (lane < 2 && !gameOver) // Move right only if not at lane 2
+            {
+                transform.Translate(2.75f, 0, 0);
+                lane++;
+            }
+            else if (!nopeSound.isPlaying && muter != 1)
             {
                 nopeSound.Play();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 1.0f && transform.position.y > -0.3f)
+
+        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < 0.7f && transform.position.y > -0.3f)
         {
             rb.velocity = new Vector3(0, jumpVelocity, 0);
+        }
+        if(transform.position.y <= -0.5 && fallingSoundHasPlayed == false)
+        {
+            if (!fallingSound.isPlaying && muter != 1)
+            {
+                fallingSound.Play();
+                fallingSoundHasPlayed = true;  
+            }
+
         }
         
             // Remove old tiles and generate new ones if necessary

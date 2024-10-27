@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\lenovo01\\MET Sky Roads\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|C:\\Users\\lenovo01\\MET Sky Roads\\assets\\scripts\\gameplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|C:\\Users\\lenovo01\\MET Sky Roads\\assets\\scripts\\audiomanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audiomanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|c:\\users\\lenovo01\\met sky roads\\assets\\scripts\\scenemanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|c:\\users\\lenovo01\\met sky roads\\assets\\scripts\\startaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|C:\\Users\\lenovo01\\MET Sky Roads\\assets\\scripts\\scenemanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scenemanagerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|C:\\Users\\lenovo01\\MET Sky Roads\\assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|C:\\Users\\lenovo01\\MET Sky Roads\\assets\\scripts\\gameplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{833C1DA7-2078-22C5-0DA5-AA0760CE6B63}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SceneManagerScript.cs",
-              "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\SceneManagerScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneManagerScript.cs",
-              "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\SceneManagerScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\SceneManagerScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Title": "StartAudio.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\StartAudio.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\StartAudio.cs",
+              "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\StartAudio.cs",
+              "RelativeToolTip": "Assets\\Scripts\\StartAudio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-24T16:39:37.322Z",
+              "WhenOpened": "2024-10-27T20:48:18.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AudioManagerScript.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\AudioManagerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AudioManagerScript.cs",
+              "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\AudioManagerScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AudioManagerScript.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAQwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T20:37:23.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CameraFollow.cs",
-              "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\CameraFollow.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraFollow.cs",
-              "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\CameraFollow.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CameraFollow.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAkAAAAEAAAAAAAAAA==",
+              "Title": "SceneManagerScript.cs",
+              "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\SceneManagerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneManagerScript.cs",
+              "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\SceneManagerScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneManagerScript.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:03:29.624Z"
+              "WhenOpened": "2024-10-24T16:39:37.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "GamePlay.cs",
               "DocumentMoniker": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\GamePlay.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay.cs",
               "ToolTip": "C:\\Users\\lenovo01\\MET Sky Roads\\Assets\\Scripts\\GamePlay.cs",
               "RelativeToolTip": "Assets\\Scripts\\GamePlay.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAQwGYBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAABAAAAAAAAAAAEwBkBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T19:52:19.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T19:52:19.163Z"
             }
           ]
         }
